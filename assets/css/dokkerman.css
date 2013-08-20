@@ -1,0 +1,19 @@
+/*
+            .---._------------------------------+
+___________/ ._____)                            |
+              ) __|          DOKKERMAN          |
+                __|   and the turkeying fellaz  |
+..---------.._____|                             |
+                  +-----------------------------+
+ */
+
+h1 {
+	font-family: "Blackout";
+	line-height: 0.8;
+	text-align: center;
+}
+
+h1 span {
+	clear: both;
+	display: block;
+}

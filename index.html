@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/dokkerman16.png">
+
+    <title>Dokkerman</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Dokkerman CSS -->
+    <link href="assets/css/dokkerman.css" rel="stylesheet">
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+  </head>
+
+  <body>
+	
+	<div id="fb-root"></div>
+    <div class="container">
+		<div class="row">
+			<div class="col-md-12">
+  				<h1 id="pageTitle">Dokkerman <span id="pageTitleSpan">and the Turkeying Fellaz</span></h1>
+			</div>
+		</div>
+		<div class="row" id="postsFromFacebook"></div>
+
+    </div> <!-- /container -->
+
+    <script>
+	  window.fbAsyncInit = function() {
+	    // init the FB JS SDK
+	    FB.init({
+	      appId      : '587719267937359',                       // App ID from the app dashboard
+	      channelUrl : '', 										// Channel file for x-domain comms
+	      status     : true,                                 	// Check Facebook Login status
+	      cookie	 : true,
+	      xfbml      : true                                  	// Look for social plugins on the page
+	    });
+	    var token;
+		FB.getLoginStatus(function (response) {
+			$.getJSON("https://graph.facebook.com/dokkerman/posts?access_token=587719267937359|3faac613025bbfaa2346f45c681ac7ba&callback=?",function(json){
+				for (item in json.data) {
+					var appendOutput = '';
+				    appendOutput += '<a class="col-md-3" href="https://www.facebook.com/' + json.data[item].id + '/">';
+				    if (json.data[item].picture) { appendOutput += '<img src="' + json.data[item].picture + '" width="100%" />'; }
+				    if (json.data[item].name) { appendOutput += '<h3>' + json.data[item].name + '</h3>'; }
+				    if (json.data[item].story) { appendOutput += '<h3>' + json.data[item].story + '</h3>'; }
+				    if (json.data[item].message) { appendOutput += '<p>' + json.data[item].message +'</p>'; }
+				    appendOutput += '</a>';
+				    $("#postsFromFacebook").append(appendOutput);
+				    
+				    //getItemDescription(json.data[item].id);
+				}
+			});
+
+			// Get and parse event descriptions. This is a separate call for each event.
+			function getItemDescription(id) {
+			    $.getJSON("https://graph.facebook.com/"+id+"?access_token="+token+"&callback=?",function(jsonItem) {
+			     	$("#event"+id).html('<p>' +jsonItem.description+'</p>');
+			    });
+			}
+		});
+
+	    // Additional initialization code such as adding Event Listeners goes here
+	  };
+
+	  // Load the SDK asynchronously
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/en_US/all.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	</script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+    <script src="assets/js/respond.min.js"></script>
+
+    <!-- Enable fit-width text -->
+    <script src="assets/js/jquery.fittext.js"></script>
+    <!-- Tittext.js examples -->
+    <script type="text/javascript">
+		$("#pageTitle").fitText(0.53);
+		$("#pageTitleSpan").fitText(1.245);
+	</script>
+
+  </body>
+</html>
