@@ -15,8 +15,6 @@
     <!-- Dokkerman CSS -->
     <link href="assets/css/dokkerman.css" rel="stylesheet">
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
   </head>
 
   <body>
@@ -29,8 +27,11 @@
 			</div>
 		</div>
 		<div class="row" id="postsFromFacebook"></div>
+		<div class="row" id="debug"></div>
 
     </div> <!-- /container -->
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
     <script>
 	  window.fbAsyncInit = function() {
@@ -47,12 +48,12 @@
 			$.getJSON("https://graph.facebook.com/dokkerman/posts?access_token=587719267937359|3faac613025bbfaa2346f45c681ac7ba&callback=?",function(json){
 				for (item in json.data) {
 					var appendOutput = '';
-				    appendOutput += '<a class="col-md-3" href="https://www.facebook.com/' + json.data[item].id + '/">';
+				    appendOutput += '<div class="col-md-3 item" href="https://www.facebook.com/' + json.data[item].id + '/">';
 				    if (json.data[item].picture) { appendOutput += '<img src="' + json.data[item].picture + '" width="100%" />'; }
 				    if (json.data[item].name) { appendOutput += '<h3>' + json.data[item].name + '</h3>'; }
 				    if (json.data[item].story) { appendOutput += '<h3>' + json.data[item].story + '</h3>'; }
 				    if (json.data[item].message) { appendOutput += '<p>' + json.data[item].message +'</p>'; }
-				    appendOutput += '</a>';
+				    appendOutput += '</div>';
 				    $("#postsFromFacebook").append(appendOutput);
 				    
 				    //getItemDescription(json.data[item].id);
@@ -65,8 +66,8 @@
 			     	$("#event"+id).html('<p>' +jsonItem.description+'</p>');
 			    });
 			}
-		});
 
+		});
 	    // Additional initialization code such as adding Event Listeners goes here
 	  };
 
@@ -78,6 +79,7 @@
 	     js.src = "//connect.facebook.net/en_US/all.js";
 	     fjs.parentNode.insertBefore(js, fjs);
 	   }(document, 'script', 'facebook-jssdk'));
+
 	</script>
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -88,14 +90,23 @@
 
     <!-- Enable fit-width text -->
     <script src="assets/js/jquery.fittext.js"></script>
-    <!-- Tittext.js examples -->
+    <!-- Fittext.js examples -->
     <script type="text/javascript">
 		$("#pageTitle").fitText(0.53);
 		$("#pageTitleSpan").fitText(1.245);
 	</script>
 
-    <!-- Masonry to create pinterest style grid -->
-    <script src="assets/js/masonry.pkgd.min.js"></script>
+	<!-- Isotope plugin for jquery // pinterest style grids -->
+	<script src="assets/js/jquery.isotope.min.js"></script>
+    <!-- Isotope.js code -->
+    <!--<script type="text/javascript">
+		$('#postsFromFacebook').isotope({
+			// options
+			itemSelector : '.item',
+			animationEngine : 'best-available',
+			layoutMode : 'masonry'
+		});
+	</script>-->
 
   </body>
 </html>
