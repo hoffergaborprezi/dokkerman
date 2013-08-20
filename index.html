@@ -26,7 +26,9 @@
   				<h1 id="pageTitle">Dokkerman <span id="pageTitleSpan">and the Turkeying Fellaz</span></h1>
 			</div>
 		</div>
-		<div class="row" id="postsFromFacebook"></div>
+		<div class="row">
+			<div id="postsFromFacebook"></div>
+		</div>
 		<div class="row" id="debug"></div>
 
     </div> <!-- /container -->
@@ -48,7 +50,7 @@
 			$.getJSON("https://graph.facebook.com/dokkerman/posts?access_token=587719267937359|3faac613025bbfaa2346f45c681ac7ba&callback=?",function(json){
 				for (item in json.data) {
 					var appendOutput = '';
-				    appendOutput += '<div class="col-md-3 item" href="https://www.facebook.com/' + json.data[item].id + '/">';
+				    appendOutput += '<div class="item" href="https://www.facebook.com/' + json.data[item].id + '/">';
 				    if (json.data[item].picture) { appendOutput += '<img src="' + json.data[item].picture + '" width="100%" />'; }
 				    if (json.data[item].name) { appendOutput += '<h3>' + json.data[item].name + '</h3>'; }
 				    if (json.data[item].story) { appendOutput += '<h3>' + json.data[item].story + '</h3>'; }
@@ -95,18 +97,6 @@
 		$("#pageTitle").fitText(0.53);
 		$("#pageTitleSpan").fitText(1.245);
 	</script>
-
-	<!-- Isotope plugin for jquery // pinterest style grids -->
-	<script src="assets/js/jquery.isotope.min.js"></script>
-    <!-- Isotope.js code -->
-    <!--<script type="text/javascript">
-		$('#postsFromFacebook').isotope({
-			// options
-			itemSelector : '.item',
-			animationEngine : 'best-available',
-			layoutMode : 'masonry'
-		});
-	</script>-->
 
   </body>
 </html>
