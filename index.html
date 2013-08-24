@@ -9,8 +9,8 @@
 
     <title>Dokkerman</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"> -->
 
     <!-- Dokkerman CSS -->
     <link href="assets/css/dokkerman.css" rel="stylesheet">
@@ -27,7 +27,16 @@
 			</div>
 		</div>
 		<div class="row">
-			<div id="postsFromFacebook"></div>
+			<div id="postsFromFacebook">
+				<div class="item" style="height: 14em;"></div>
+				<div class="item" style="height: 26em;"></div>
+				<div class="item" style="height: 8em;"></div>
+				<div class="item" style="height: 14em;"></div>
+				<div class="item" style="height: 8em;"></div>
+				<div class="item" style="height: 18em;"></div>
+				<div class="item" style="height: 16em;"></div>
+				<div class="item" style="height: 12em;"></div>
+			</div>
 		</div>
 		<div class="row" id="debug"></div>
 
@@ -35,7 +44,7 @@
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
-    <script>
+    <!--<script>
 	  window.fbAsyncInit = function() {
 	    // init the FB JS SDK
 	    FB.init({
@@ -82,10 +91,10 @@
 	     fjs.parentNode.insertBefore(js, fjs);
 	   }(document, 'script', 'facebook-jssdk'));
 
-	</script>
+	</script> -->
 
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed
+    <script src="assets/js/bootstrap.min.js"></script> -->
 
     <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
     <script src="assets/js/respond.min.js"></script>
@@ -96,6 +105,24 @@
     <script type="text/javascript">
 		$("#pageTitle").fitText(0.53);
 		$("#pageTitleSpan").fitText(1.245);
+	</script>
+
+	<script src="assets/js/masonry.pkgd.min.js"></script>
+	<script>
+		$( function()
+		{
+		    var columns    = 3,
+		        setColumns = function() { columns = $( window ).width() > 640 ? 3 : $( window ).width() > 320 ? 2 : 1; };
+
+		    setColumns();
+		    $( window ).resize( setColumns );
+
+		    $( '#postsFromFacebook' ).masonry(
+		    {
+		        itemSelector: '.item',
+		        columnWidth:  function( containerWidth ) { return containerWidth / columns; }
+		    });
+		});
 	</script>
 
   </body>
