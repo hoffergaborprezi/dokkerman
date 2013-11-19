@@ -37,13 +37,7 @@
 		</div>
 		<div class="row">
 			<div id="postsFromFacebook">
-				<div class="item">
-						<div class="item" href="https://www.facebook.com/">
-							<img src="" width="100%" height="300" />
-							<h3>Ez a címe</h3>
-							<p>Ez meg szöveg Ez meg szöveg Ez meg szöveg Ez meg szöveg Ez meg szöveg Ez meg szöveg Ez meg szöveg Ez meg szöveg Ez meg szöveg Ez meg szöveg Ez meg szöveg Ez meg szöveg Ez meg szöveg Ez meg szöveg Ez meg szöveg</p>
-						</div>
-				</div>
+				<!-- Posts from facebook -->
 			</div>
 		</div>
 		<div class="row" id="debug"></div>
@@ -52,7 +46,7 @@
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
-    <!--<script>
+    <script>
 	  window.fbAsyncInit = function() {
 	    // init the FB JS SDK
 	    FB.init({
@@ -68,8 +62,8 @@
 			$.getJSON("https://graph.facebook.com/dokkerman/posts?access_token=587719267937359|3faac613025bbfaa2346f45c681ac7ba&callback=?",function(json){
 				for (item in json.data) {
 					var appendOutput = '';
-				    appendOutput += '<div class="item" href="https://www.facebook.com/' + json.data[item].id + '/">';
-				    if (json.data[item].picture) { appendOutput += '<img src="' + json.data[item].picture + '" width="100%" />'; }
+				    appendOutput += '<div class="item">';
+				    if (json.data[item].picture) { appendOutput += '<a href="https://www.facebook.com/' + json.data[item].id + '/" target"_blank"><img src="' + json.data[item].picture + '" width="100%" /></a>'; }
 				    if (json.data[item].name) { appendOutput += '<h3>' + json.data[item].name + '</h3>'; }
 				    if (json.data[item].story) { appendOutput += '<h3>' + json.data[item].story + '</h3>'; }
 				    if (json.data[item].message) { appendOutput += '<p>' + json.data[item].message +'</p>'; }
@@ -100,7 +94,7 @@
 	     fjs.parentNode.insertBefore(js, fjs);
 	   }(document, 'script', 'facebook-jssdk'));
 
-	</script> -->
+	</script>
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="assets/js/bootstrap.min.js"></script>
