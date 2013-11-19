@@ -64,7 +64,7 @@
 				for (item in json.data) {
 					var appendOutput = '';
 				    appendOutput += '<div class="item">';
-				    if (json.data[item].picture) { appendOutput += '<a href="https://www.facebook.com/' + json.data[item].id + '/" target"_blank"><img src="' + json.data[item].picture + '" width="100%" /></a>'; }
+				    if (json.data[item].picture) { appendOutput += '<a href="https://www.facebook.com/' + json.data[item].id + '/" target="_blank"><img src="' + json.data[item].picture + '" width="100%" /></a>'; }
 				    if (json.data[item].name) { appendOutput += '<h3>' + json.data[item].name + '</h3>'; }
 				    if (json.data[item].story) { appendOutput += '<h3>' + json.data[item].story + '</h3>'; }
 				    if (json.data[item].message) { appendOutput += '<p>' + json.data[item].message +'</p>'; }
