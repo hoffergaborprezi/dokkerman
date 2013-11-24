@@ -19,7 +19,7 @@ ___________/ ._____)                            |
 	    var token;
 	    // TODO: proper authentication
 		FB.getLoginStatus(function (response) {
-			$.getJSON("https://graph.facebook.com/dokkerman/posts?access_token=587719267937359|3faac613025bbfaa2346f45c681ac7ba&callback=?",function(json){
+			$.getJSON("https://graph.facebook.com/dokkerman/posts?access_token=587719267937359|3faac613025bbfaa2346f45c681ac7ba&limit=50",function(json){
 				for (item in json.data) {
 					var appendOutput = '';
 				    appendOutput += '<div class="item">';
@@ -50,10 +50,27 @@ ___________/ ._____)                            |
 				});
 			});
 
+			$.getJSON("https://graph.facebook.com/dokkerman/events?access_token=587719267937359|3faac613025bbfaa2346f45c681ac7ba",function(json){
+				for (item in json.data) {
+					var appendOutput = '';
+				    appendOutput += '<div class="event">';
+				    if (json.data[item].picture) { appendOutput += '<a href="https://www.facebook.com/' + json.data[item].id + '/" target="_blank"><img src="' + json.data[item].picture + '" width="100%" /></a>'; }
+				    if (json.data[item].name) { appendOutput += '<h3>' + json.data[item].name + '</h3>'; }
+				    appendOutput += '</div>';
+				    $("#eventsFromFacebook").append(appendOutput);
+				    getItemDescription(json.data[item].id);
+				}
+			});
+
+
 			// Get and parse event descriptions. This is a separate call for each event.
 			function getItemDescription(id) {
-			    $.getJSON("https://graph.facebook.com/"+id+"?access_token="+token+"&callback=?",function(jsonItem) {
-			     	$("#event"+id).html('<p>' +jsonItem.description+'</p>');
+			    $.getJSON("https://graph.facebook.com/"+id+"?access_token=587719267937359|3faac613025bbfaa2346f45c681ac7ba",function(json) {
+					var appendEvent = '';
+					appendEvent += '<p>' + json.description + '</p>';
+					appendEvent += '<p>' + json.location + '</p>';
+					appendEvent += '<p>' + json.venue.latitude + ' / ' + json.venue.longitude + '</p>';
+				    $("#eventsFromFacebook").append(appendEvent);
 			    });
 			}
 
