@@ -7,7 +7,7 @@ ___________/ ._____)                            |
                   +-----------------------------+
  */
 
- window.fbAsyncInit = function() {
+window.fbAsyncInit = function() {
 	    // init the FB JS SDK
 	    FB.init({
 	      appId      : '587719267937359',                       // App ID from the app dashboard

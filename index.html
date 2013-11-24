@@ -39,6 +39,7 @@
 			</div>
 			<div class="col-md-4" id="eventsFromFacebook">
 				<h2>Upcoming GIG</h2>
+				<div id="map-canvas" style="height:200px;"/>
 			</div>
 		</div>
 		<div class="row">
@@ -77,6 +78,23 @@
 
     <!-- Jquery Wookmark - for the Pinterest look - actual script is after the Facebook load -->
     <script src="assets/js/jquery.wookmark.min.js"></script>
+
+    <!-- Google Maps API script -->
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkHq3Pp16I5LfxORuMD2M3It8pn8yb0VM&sensor=true">
+    </script>
+
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(-34.397, 150.644),
+          zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 
   </body>
 </html>
