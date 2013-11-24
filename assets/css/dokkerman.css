@@ -18,7 +18,7 @@ h1 span {
 	display: block;
 }
 
-#postsFromFacebook {
+/*#postsFromFacebook {
 	-webkit-column-count: 5;
 	-webkit-column-gap: 10px;
 	-webkit-column-fill: auto;
@@ -41,6 +41,12 @@ h1 span {
 	-webkit-column-break-inside: avoid;
 	-moz-column-break-inside: avoid;
 	column-break-inside: avoid;
+}*/
+
+.item {
+	width: 200px;
+	background-color: #EEEEEE;
+	padding: 15px;
 }
 
 .item a, .item p, .item h3 {
@@ -48,10 +54,18 @@ h1 span {
 	word-break:break-all;
 }
 
+.item h3 {
+	font-size: 120%;
+}
+
+.item img {
+	width: 100%;
+}
+
 @media only screen and ( max-width: 40em ) /* 640px */
 {
 
-	#postsFromFacebook {
+	/*#postsFromFacebook {
 		-webkit-column-count: 3;
 		-webkit-column-gap: 10px;
 		-webkit-column-fill: auto;
@@ -64,13 +78,13 @@ h1 span {
 	}
 
 	.item {
-		margin-bottom: 0.938em; /* 15px */
-	}
+		margin-bottom: 0.938em;
+	}*/
 }
 
 @media only screen and ( max-width: 25em ) /* 320px */
 {
-	#postsFromFacebook {
+	/*#postsFromFacebook {
 		width: 100%;
 		margin-left: 0;
 	}
@@ -79,5 +93,5 @@ h1 span {
 		width: 100%;
 		margin-left: 0;
 		margin-right: 0;
-	}
+	}*/
 }

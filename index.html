@@ -47,7 +47,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div id="postsFromFacebook">
+			<div id="postsFromFacebook" class="col-md-12">
 				<!-- Posts from facebook -->
 				<!-- TODO: add isotope.js to order the cards from left to right -->
 			</div>
@@ -84,6 +84,22 @@
 				    
 				    //getItemDescription(json.data[item].id);
 				}
+				// Wookmark init script
+				$('.item').wookmark({
+				  align: 'center',
+				  autoResize: true,
+				  container: $('#postsFromFacebook'),
+				  direction: 'left',
+				  ignoreInactiveItems: true,
+				  itemWidth: 200,
+				  fillEmptySpace: false,
+				  flexibleWidth: false,
+				  offset: 10,
+				  onLayoutChanged: undefined,
+				  outerOffset: 0,
+				  resizeDelay: 50,
+				  possibleFilters: []
+				});
 			});
 
 			// Get and parse event descriptions. This is a separate call for each event.
@@ -121,6 +137,9 @@
 		$("#pageTitle").fitText(0.53);
 		$("#pageTitleSpan").fitText(1.245);
 	</script>
+
+    <!-- Jquery Wookmark - for the Pinterest look - actual script is after the Facebook load -->
+    <script src="assets/js/jquery.wookmark.min.js"></script>
 
   </body>
 </html>
