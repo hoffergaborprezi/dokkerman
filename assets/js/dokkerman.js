@@ -68,7 +68,8 @@ window.fbAsyncInit = function() {
 			    $.getJSON("https://graph.facebook.com/"+id+"?access_token=587719267937359|3faac613025bbfaa2346f45c681ac7ba",function(json) {
 					var appendEvent = '';
 					appendEvent += '<p>' + json.description + '</p>';
-					appendEvent += '<p>' + json.location + '</p>';
+					appendEvent += '<a href="http://facebook.com/' + json.owner.id + ' target="_blank"><p>' + json.location + '</p></a>';
+					appendEvent += '<p>' + json.venue.zip + ' ' + json.venue.city + ', ' + json.venue.street + '</p>';
 					appendEvent += '<p>' + json.venue.latitude + ' / ' + json.venue.longitude + '</p>';
 				    $("#eventsFromFacebook").append(appendEvent);
 			    });
